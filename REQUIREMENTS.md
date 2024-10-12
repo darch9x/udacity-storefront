@@ -18,6 +18,9 @@ These are the notes from a meeting with the frontend developer that describe wha
 
 #### Orders
 - Current Order by user (args: user id)[token required] /orders/byUser/:userId [GET]
+- [OPTIONAL] Index [token required] /orders [GET]
+- [OPTIONAL] Add product to order [token required] /orders/addProductToOrder [POST]
+- [OPTIONAL] Create [token required] /orders [POST]
 - [OPTIONAL] Completed Orders by user (args: user id)[token required]
 
 ## Data Shapes
@@ -37,8 +40,15 @@ id SERIAL PRIMARY KEY, firstName VARCHAR(100), lastName VARCHAR(100), password_d
 
 #### Orders
 - id
-- id of each product in the order
-- quantity of each product in the order
+<!-- - id of each product in the order -->
+<!-- - quantity of each product in the order -->
 - user_id
 - status of order (active or complete)
-id SERIAL PRIMARY KEY, product_id INTEGER REFERENCES products(id), quantity INTEGER, user_id INTEGER REFERENCES users(id), status VARCHAR(20)
+id SERIAL PRIMARY KEY, user_id INTEGER REFERENCES users(id), status VARCHAR(20)
+
+#### Order Products
+- id
+- id of each product in the order
+- id of order
+- quantity of each product in the order
+id SERIAL PRIMARY KEY, product_id INTEGER REFERENCES products(id), order_id INTEGER REFERENCES orders(id), quantity INTEGER

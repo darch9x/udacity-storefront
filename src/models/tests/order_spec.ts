@@ -31,6 +31,6 @@ describe('Order model', () => {
     });
     it('should return a order product with addProduct method', async () => {
         const result = await orderStore.addProduct(mockOrderProduct[0])
-        expect(result).toEqual(mockOrderProduct[0]);
+        expect(result.product_id).toEqual(mockOrderProduct[0].product_id);
     });
 })

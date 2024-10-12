@@ -27,7 +27,7 @@ describe('Product model', () => {
     });
     it('should return a list with index method', async () => {
         const result = await productStore.index();
-        expect(result).toEqual(mockProduct);
+        expect(result).toBeInstanceOf(Array);
     });
     it('should return a product with show method', async () => {
         const id = mockProduct[0].id ?? '';

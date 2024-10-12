@@ -5,8 +5,8 @@ describe('Product endpoints', () => {
     let token = '';
     beforeAll(async () => {
         const res = await request(app).post('/users/').send({
-            firstName: 'dinh',
-            lastName: 'le',
+            firstname: 'dinh',
+            lastname: 'le',
             password: '123'
         });
 
