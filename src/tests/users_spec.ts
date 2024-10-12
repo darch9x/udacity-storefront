@@ -1,7 +1,7 @@
 import request from 'supertest';
 import app from '../server';
 
-describe('Product endpoints', () => {
+describe('User endpoints', () => {
     let token = '';
     beforeAll(async () => {
         const res = await request(app).post('/users/').send({
@@ -14,18 +14,18 @@ describe('Product endpoints', () => {
         token = body;
     })
 
-    it('should return a list of product on GET /products', async () => {
-      const res = await request(app).get('/products/');
+    it('should return a list of user on GET /users', async () => {
+      const res = await request(app).get('/users/').set('Authorization', `Bearer ${token}`);
       expect(res.body).toBeInstanceOf(Array);
     });
 
-    it('should respond with 200 on GET /products/2', async () => {
-        const res = await request(app).get('/products/2');
+    it('should respond with 200 on GET /users/2', async () => {
+        const res = await request(app).get('/users/2').set('Authorization', `Bearer ${token}`);
         expect(res.status).toBe(200);
     });
 
-    it('should respond with 200 on POST /products', async () => {
-        const res = await request(app).post('/products/').set('Authorization', `Bearer ${token}`).send({
+    it('should respond with 200 on POST /users', async () => {
+        const res = await request(app).post('/users/').set('Authorization', `Bearer ${token}`).send({
             name: 'apple',
             price: 299,
             category: 'fruit'

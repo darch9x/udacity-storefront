@@ -5,33 +5,35 @@ These are the notes from a meeting with the frontend developer that describe wha
 
 ## API Endpoints
 #### Products
-- Index 
-- Show
-- Create [token required]
+- Index /products [GET]
+- Show /products/:id [GET]
+- Create [token required] /products/ [POST]
 - [OPTIONAL] Top 5 most popular products 
 - [OPTIONAL] Products by category (args: product category)
 
 #### Users
-- Index [token required]
-- Show [token required]
-- Create N[token required]
+- Index [token required] /users [GET]
+- Show [token required] /users/:id [GET]
+- Create N[token required] /users/ [POST]
 
 #### Orders
-- Current Order by user (args: user id)[token required]
+- Current Order by user (args: user id)[token required] /orders/byUser/:userId [GET]
 - [OPTIONAL] Completed Orders by user (args: user id)[token required]
 
 ## Data Shapes
 #### Product
--  id
+- id
 - name
 - price
 - [OPTIONAL] category
+id SERIAL PRIMARY KEY, name VARCHAR(100), price INTEGER, category VARCHAR(55)
 
 #### User
 - id
 - firstName
 - lastName
 - password
+id SERIAL PRIMARY KEY, firstName VARCHAR(100), lastName VARCHAR(100), password_digest VARCHAR(100)
 
 #### Orders
 - id
@@ -39,4 +41,4 @@ These are the notes from a meeting with the frontend developer that describe wha
 - quantity of each product in the order
 - user_id
 - status of order (active or complete)
-
+id SERIAL PRIMARY KEY, product_id INTEGER REFERENCES products(id), quantity INTEGER, user_id INTEGER REFERENCES users(id), status VARCHAR(20)
