@@ -25,6 +25,8 @@ For Dev database:
         GRANT ALL PRIVILEGES ON DATABASE storefront TO storefront_user;
 
         GRANT ALL ON SCHEMA public TO storefront_user;
+
+        GRANT USAGE, SELECT ON SEQUENCE migrations_id_seq TO storefront_user;
         
 For Test database:
 
@@ -33,6 +35,8 @@ For Test database:
         GRANT ALL PRIVILEGES ON DATABASE storefront_test TO storefront_user;   
 
         GRANT ALL ON SCHEMA public TO storefront_user;
+
+        GRANT USAGE, SELECT ON SEQUENCE migrations_id_seq TO storefront_user;
 
 ## Running ports
 
