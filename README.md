@@ -23,12 +23,16 @@ For Dev database:
         \c storefront
         
         GRANT ALL PRIVILEGES ON DATABASE storefront TO storefront_user;
+
+        GRANT ALL ON SCHEMA public TO storefront_user;
         
 For Test database:
 
         \c storefront_test
         
         GRANT ALL PRIVILEGES ON DATABASE storefront_test TO storefront_user;   
+
+        GRANT ALL ON SCHEMA public TO storefront_user;
 
 ## Running ports
 
@@ -49,7 +53,7 @@ Because dotenv is in .gitignore, so environment variables will be included here:
     POSTGRES_HOST=127.0.0.1
     POSTGRES_DB=storefront
     POSTGRES_DB_TEST=storefront_test
-    POSTGRES_USER=shopping_user
+    POSTGRES_USER=storefront_user
     POSTGRES_PASSWORD=password123
     BCRYPT_PASSWORD=your-secret-password
     SALT_ROUNDS=10
